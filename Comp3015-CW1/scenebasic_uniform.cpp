@@ -44,26 +44,33 @@ void SceneBasic_Uniform::initScene()
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_CUBE_MAP, cubeTex);
 
+    prog.setUniform("lights[0].Position", glm::vec4(0.7f, 0.2f, 2.0f ,1.0f));
+    prog.setUniform("lights[1].Position", glm::vec4(2.3f, -3.3f, 4.0f, 1.0f));
+    prog.setUniform("lights[2].Position", glm::vec4(-4.0f, 2.0f, 12.0f, 1.0f));
+    prog.setUniform("lights[3].Position", glm::vec4(0.0f, 0.0f, 3.0f, 1.0f));
 
-    projection = mat4(1.0f);
-    float x, z;
+    prog.setUniform("lights[0].L", vec3(1.0f, 0.6f, 0.0f));
+    prog.setUniform("lights[1].L", vec3(1.0f, 0.0f, 0.0f));
+    prog.setUniform("lights[2].L", vec3(1.0f, 1.0, 0.0));
+    prog.setUniform("lights[3].L", vec3(0.2f, 0.2f, 1.0f));
 
-    std::stringstream name;
-    name << "lights.Position";
-    x = 2.0f * cosf((glm::two_pi<float>() / 3));
-    z = 2.0f * sinf((glm::two_pi<float>() / 3));
-    prog.setUniform(name.str().c_str(), view * glm::vec4(x, 1.2f, z + 1.0f, 1.0f));
+    prog.setUniform("lights[0].La", vec3(1.0f, 0.6f, 0.0f));
+    prog.setUniform("lights[1].La", vec3(1.0f, 0.0f, 0.0f));
+    prog.setUniform("lights[2].La", vec3(1.0f, 1.0, 0.0));
+    prog.setUniform("lights[3].La", vec3(0.2f, 0.2f, 1.0f));
 
-    prog.setUniform("lights.L", vec3(1.0f, 1.0f, 1.0f));
-
-    prog.setUniform("lights.La", vec3(0.5f, 0.5f, 0.5f));
+    prog.setUniform("Spot.L", vec3(0.9f));
+    prog.setUniform("Spot.La", vec3(0.5f));
+    prog.setUniform("Spot.Exponent", 50.0f);
+    prog.setUniform("Spot.Cutoff", glm::radians(15.0f));
+    prog.setUniform("Spot.position", glm::vec4(0.0f, 10.0f, 0.0f, 1.0f));
 
     GLuint Exterior = Texture::loadTexture("../Comp3015-CW1/media/texture/Statue_diff.jpg");
     GLuint moss = Texture::loadTexture("../Comp3015-CW1/media/texture/moss.png");
     GLuint moss2 = Texture::loadTexture("../Comp3015-CW1/media/texture/hardwood2_roughness.jpg");
     GLuint moss3 = Texture::loadTexture("../Comp3015-CW1/media/texture/bluewater.png");
 
-
+    projection = mat4(1.0f);
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, Exterior);
@@ -161,6 +168,7 @@ void  SceneBasic_Uniform::processInputs(GLFWwindow* window)
 
 void SceneBasic_Uniform::render()
 {
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
  
@@ -175,7 +183,7 @@ void SceneBasic_Uniform::render()
     prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
     prog.setUniform("Material.Ks", 0.1f, 0.1f, 0.1f);
     prog.setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
-    prog.setUniform("Material.Shininess", 500.0f);
+    prog.setUniform("Material.Shininess", 180.0f);
     prog.setUniform("Material.pick", 0.0f);
 
     model = mat4(1.0f);
