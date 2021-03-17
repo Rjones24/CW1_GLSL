@@ -26,5 +26,5 @@ in the program there are 2 shaders each made of a vertex shader and a fragement 
 
 the first shader and the mostimportant is the basic_uniform.vert and basic_uniform.frag as these are used to create the lights using a blinn_phong approach as well as mapp the texytures to the modles used in the scene
 
-![](media/shader.gif)
+![](Comp3015-CW1/media/shader.gif)
  
