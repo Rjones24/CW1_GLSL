@@ -1,4 +1,21 @@
-﻿  scenebasic_uniform.cpp
+﻿  glad.c
+  cube.cpp
+  glslprogram.cpp
+  glutils.cpp
+  objmesh.cpp
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\helper\objmesh.cpp(188,43): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\helper\objmesh.cpp(194,50): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\helper\objmesh.cpp(198,45): warning C4267: '+=': conversion from 'size_t' to 'int', possible loss of data
+  plane.cpp
+  skybox.cpp
+  sphere.cpp
+  stb_image.cpp
+  teapot.cpp
+  texture.cpp
+  torus.cpp
+  trianglemesh.cpp
+  main.cpp
+  scenebasic_uniform.cpp
 C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(129,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(139,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(140,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
@@ -6,4 +23,5 @@ C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(145,
 C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(146,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(147,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(148,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   Project_Template.vcxproj -> C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\x64\Debug\Project_Template.exe

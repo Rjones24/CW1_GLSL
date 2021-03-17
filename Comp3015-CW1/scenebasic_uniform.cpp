@@ -11,7 +11,7 @@ using glm::mat4;
 
 #include <sstream>
 
-//sets up the camera positions as well as where the front and top of the camera are
+//Sets up the camera positions as well as where the front and top of the camera are
 glm::vec3 cameraPos = glm::vec3(0.0f, 5.0f, 3.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
@@ -19,13 +19,13 @@ glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 float deltaTime = 0.0f;	// Time between current frame and last frame
 float lastFrame = 0.0f; // Time of last frame
 
-bool firstMouse = true; // checks for the first time the mouse is read in my the screen
+bool firstMouse = true; // checks for the first time the mouse is processed in my the screen
 double mouseX,  mouseY;
 float lastX = 400, lastY = 300, yaw = -90.0f, pitch = 0.0f;
 
 GLFWwindow* window1;
 
-//this is where all of the bojects that the scene will display are iniated
+//this is where all of the ojects in the scene are initiated
 SceneBasic_Uniform::SceneBasic_Uniform() : plane(10.0f, 10.0f, 100, 100),
 sky(100.0f)
 {
@@ -37,7 +37,7 @@ void SceneBasic_Uniform::initScene()
 {
     compile();
     glEnable(GL_DEPTH_TEST);
-    // sets window1 to the current window this is so the camera will be able to move with keybord input
+    // sets window1 to the current window. This is so the camera will be able to move with keyboard input
     window1 = glfwGetCurrentContext();
     projection = mat4(1.0f);
 
@@ -48,25 +48,25 @@ void SceneBasic_Uniform::initScene()
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_CUBE_MAP, cubeTex);
 
-    // sets all of the positions for the point lights
+    // sets all of the positions for the point lights. the positions can be seen in the first three numbers within the vec4 brackets
     prog.setUniform("lights[0].Position", glm::vec4(0.7f, 0.2f, 2.0f ,1.0f));
     prog.setUniform("lights[1].Position", glm::vec4(2.3f, -3.3f, 4.0f, 1.0f));
     prog.setUniform("lights[2].Position", glm::vec4(-4.0f, 2.0f, 12.0f, 1.0f));
     prog.setUniform("lights[3].Position", glm::vec4(0.0f, 0.0f, 3.0f, 1.0f));
 
-    // sets all of the Ambient light intensitys for the point lights
+    // sets all of the Ambient light intensities for the point lights. the intensities can be seen within the vec3 brackets.
     prog.setUniform("lights[0].L", vec3(1.0f, 0.6f, 0.0f));
     prog.setUniform("lights[1].L", vec3(1.0f, 0.0f, 0.0f));
     prog.setUniform("lights[2].L", vec3(1.0f, 1.0, 0.0));
     prog.setUniform("lights[3].L", vec3(0.2f, 0.2f, 1.0f));
 
-    // sets all of the Diffuse and specular light intensitys for the point lights
+    // sets all of the Diffuse and specular light intensities for the point lights
     prog.setUniform("lights[0].La", vec3(1.0f, 0.6f, 0.0f));
     prog.setUniform("lights[1].La", vec3(1.0f, 0.0f, 0.0f));
     prog.setUniform("lights[2].La", vec3(1.0f, 1.0, 0.0));
     prog.setUniform("lights[3].La", vec3(0.2f, 0.2f, 1.0f));
 
-    // sets all of the information for the spot light
+    // sets all of the information for the spot light. 
     prog.setUniform("Spot.L", vec3(0.9f));
     prog.setUniform("Spot.La", vec3(0.5f));
     prog.setUniform("Spot.Exponent", 50.0f);
@@ -79,7 +79,7 @@ void SceneBasic_Uniform::initScene()
     GLuint floor = Texture::loadTexture("../Comp3015-CW1/media/texture/hardwood2_roughness.jpg");
     GLuint water = Texture::loadTexture("../Comp3015-CW1/media/texture/bluewater.png");
 
-    //all of the textures are then binded
+    //all of the textures are then bound
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, statue);
     glActiveTexture(GL_TEXTURE1);
@@ -93,13 +93,13 @@ void SceneBasic_Uniform::initScene()
 void SceneBasic_Uniform::compile()
 {
 	try {
-        // creates and linkes the basic shadert used for the scene
+        // creates and links the basic shader used for the scene
 		prog.compileShader("shader/basic_uniform.vert");
 		prog.compileShader("shader/basic_uniform.frag");
 		prog.link();
 		prog.use();
 
-        // creates and linkes the shaders used for the skybox
+        // creates and links the shaders used for the skybox
         skyboxShader.compileShader("shader/Skybox.vert");
         skyboxShader.compileShader("shader/Skybox.frag");
         skyboxShader.link();
@@ -133,7 +133,7 @@ void SceneBasic_Uniform::update( float t )
 
 void SceneBasic_Uniform::mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
-    // checks to see if it is the fiorst time that the mouse hase been checked and if it is sets the mouse to the center of the window
+    // checks to see if it is the first time that the mouse has been checked and if it is, sets the mouse to the center of the window
     if (firstMouse)
     {
         lastX = xpos;
@@ -153,7 +153,7 @@ void SceneBasic_Uniform::mouse_callback(GLFWwindow* window, double xpos, double 
     yoffset *= sensitivity;
 
 
-    //caluclates the angle to move the camera and then stes a new front of the camera
+    //calculates the angle to move the camera and then sets a new front of the camera
     yaw += xoffset;
     pitch += yoffset;
 
@@ -169,7 +169,7 @@ void SceneBasic_Uniform::mouse_callback(GLFWwindow* window, double xpos, double 
     cameraFront = glm::normalize(direction);
 }
 
-// takes the keyboard input and converts it to moving the camera in a set direction b=depending on the key pressed
+// takes the keyboard input and converts it to moving the camera in a set direction depending on the key pressed
 void  SceneBasic_Uniform::processInputs(GLFWwindow* window)
 {
     float cameraSpeed = 2.5f * deltaTime; 
@@ -199,14 +199,14 @@ void SceneBasic_Uniform::render()
 
     //tells the scene to use the basic shader
     prog.use();
-    //stes the material infomation for the modle to be loded
+    //sets the material infomation for the model to be loaded
     prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
     prog.setUniform("Material.Ks", 0.1f, 0.1f, 0.1f);
     prog.setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
     prog.setUniform("Material.Shininess", 180.0f);
     prog.setUniform("Material.pick", 0.0f);
 
-    //sets the models scale, roataion and transform in the scene
+    //sets the model scale, rotation and transform in the scene
     model = mat4(1.0f);
     model = glm::rotate(model, glm::radians(-90.0f), vec3(1.0f, 0.0f, 0.0f));
     model = glm::scale(model , vec3(0.1f, 0.1f, 0.1f));
@@ -216,7 +216,7 @@ void SceneBasic_Uniform::render()
     //tells the scene what to render
 
     statue->render();
-    //stes the material infomation for the modle to be loded
+    //sets the material infomation for the model to be loded
     prog.setUniform("Material.Kd", 0.1f, 0.1f, 0.1f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
@@ -245,7 +245,7 @@ void SceneBasic_Uniform::resize(int w, int h)
 
 void  SceneBasic_Uniform::setMatrices() {
 
-    //pasess all of the matrixes to the shader
+    //passess all of the matrix to the shader
     mat4 mv = view * model;
 
     prog.setUniform("ModelViewMatrix", mv);

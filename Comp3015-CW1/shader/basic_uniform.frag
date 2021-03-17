@@ -1,13 +1,13 @@
 #version 460
 
-//input varaibales
+//input variables
 in vec3 Position;
 in vec3 Normal;
 in vec2 TexCoord;
 
 layout (location = 0) out vec4 FragColor;
 
-//all of the input textures that will be used
+//all of the input textures used
 layout(binding=0) uniform sampler2D statueTex;
 layout(binding=1) uniform sampler2D MossTex;
 layout(binding=2) uniform sampler2D floorTex;
@@ -15,16 +15,16 @@ layout(binding=3) uniform sampler2D waterTex;
 
 //all of the uniforms needed for a spotlight
 uniform struct spotLightInfo {
-vec4 Position; // Light position in eye coords.
+vec4 Position; // Light position in eye co-ordinates.
 vec3 La; // Ambient light intensity
 vec3 L; // Diffuse and specular light intensity
-vec3 Direction;// Direction of the spotlight in cam coords
+vec3 Direction;// Direction of the spotlight in cam co-ordinates
 float Exponent;// Angular attenuation exponent
 float cutoff;// Cutoff angle (between 0 and pi/2)
 } spot;
 
 uniform struct LightInfo {
-vec4 Position; // Light position in eye coords.
+vec4 Position; // Light position in eye co-ordinates.
 vec3 La; // Ambient light intensity
 vec3 L; // Diffuse and specular light intensity
 } lights[4];
@@ -34,8 +34,8 @@ uniform struct MaterialInfo {
 vec3 Ka; // Ambient reflectivity
 vec3 Kd; // Diffuse reflectivity
 vec3 Ks; // Specular reflectivity
-float Shininess;
-float pick;// Specular shininess factor
+float Shininess;// Specular shininess factor
+float pick;// used to pick which texture is used
 } Material;
 
 //varaibles used for toon shading
@@ -63,14 +63,14 @@ vec3 point_blinn_phongModel( int light, vec3 position, vec3 n )
 
  vec3 spec = vec3(0.0);
 
- //check to see it=f sDotN is grater then 0 and if it is calculates a speculer
+ //check to see if sDotN is greater then 0, calculate a speculer light
  if( sDotN > 0.0 ){
   vec3 v = normalize(-position.xyz);
   vec3 h = normalize(v + s);
   spec = Material.Ks * pow( max( dot(h,n), 0.0 ), Material.Shininess );
  }
 
- //returns all of the calulates fro the light
+ //returns all of the calculations for the light
  return ambient + lights[light].L * (diffuse + spec);
 }
 
@@ -80,19 +80,19 @@ vec3 point_blinn_phongModel( int light, vec3 position, vec3 n )
  //calculate ambient
 vec3 ambient = Material.Ka * spot.La * texColor;
 
-//calcualtes s : the direction from the surface point to the light source
+//calculates s : the direction from the surface point to the light source
   s = spot.Position.xyz;
 
-   //cosine of the angle
+   //calculates cosine of the angle between the normal and the direction of the light
  float cosangle = max( dot(-s, normalize(spot.Direction)), 0.0 );
 
- //gives you the actual angle
+ //gives you the actual angle between the normal and the direction of the light 
  float angle = acos(cosangle);
  float spotScale = 0.0;
 
  vec3 diffuse;
  vec3 spec = vec3(0.0);
- //checks that the cuttoff is grater then the angle
+ //checks that the cuttoff is greater then the angle
  if(angle< spot.cutoff){
 
   spotScale = pow(cosangle,spot.Exponent);
@@ -103,14 +103,14 @@ vec3 ambient = Material.Ka * spot.La * texColor;
   //calculate diffuse 
   diffuse = Material.Kd * floor(sDotN *levels)* scaleFactor*texColor ;
   
- //check to see it=f sDotN is grater then 0 and if it is calculates a speculer
+ //check to see if sDotN is greater then 0 and if it is calculates a speculer light 
   if( sDotN > 0.0 ){
     vec3 v = normalize(-position.xyz);
     vec3 h = normalize(v + s);
     spec = Material.Ks * pow( max( dot(h,n), 0.0 ), Material.Shininess );
    }
  }
-  //returns all of the calulates fro the light
+  //returns all of the calulations for the light
  return ambient + spot.L * (diffuse + spec);
 }
 
