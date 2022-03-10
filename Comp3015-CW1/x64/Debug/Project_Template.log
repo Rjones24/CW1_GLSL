@@ -1,9 +1,9 @@
 ﻿  scenebasic_uniform.cpp
-C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(129,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(139,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(140,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(145,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(146,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(147,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(148,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(283,24): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(296,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(297,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(302,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(303,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(304,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\scenebasic_uniform.cpp(305,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Project_Template.vcxproj -> C:\Users\Ryan\Documents\GitHub\CW1_GLSL\Comp3015-CW1\x64\Debug\Project_Template.exe

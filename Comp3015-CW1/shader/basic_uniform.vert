@@ -13,7 +13,6 @@ out vec2 TexCoord;
 // all of the uniforms the vertex shader will need
 uniform mat4 ModelViewMatrix;
 uniform mat3 NormalMatrix;
-uniform mat4 ProjectionMatrix;
 uniform mat4 MVP;
 
 void main() {
